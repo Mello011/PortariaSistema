@@ -445,18 +445,20 @@ function switchTab(tabName) {
     }
 }
 
-function switchDashSubTab(subtabName) {
+function switchDashSubTab(subtabName, evt) {
     document.querySelectorAll('.dash-tab-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.dash-subtab-content').forEach(sub => sub.classList.remove('active'));
 
+    const currentTarget = (evt && evt.currentTarget) ? evt.currentTarget : (window.event ? window.event.currentTarget : null);
+
     if (subtabName === 'espelho') {
-        event.currentTarget.classList.add('active');
+        if (currentTarget) currentTarget.classList.add('active');
         document.getElementById('subtab-espelho').classList.add('active');
     } else if (subtabName === 'justificativas') {
-        event.currentTarget.classList.add('active');
+        if (currentTarget) currentTarget.classList.add('active');
         document.getElementById('subtab-justificativas').classList.add('active');
     } else if (subtabName === 'comprovante') {
-        event.currentTarget.classList.add('active');
+        if (currentTarget) currentTarget.classList.add('active');
         document.getElementById('subtab-comprovante').classList.add('active');
     }
 }
@@ -623,7 +625,7 @@ function updatePorteiroAlerts() {
     if (porteiroOcorrencias.length > 0) {
         list.innerHTML = porteiroOcorrencias.map(o => {
             const func = mockStore.funcionarios.find(f => f.id === o.funcionario_id);
-            return `<li><strong>${func ? func.nome : 'Cozinheiro'}</strong> - ${o.justificativa} (Ref: ${o.data_referencia})</li>`;
+            return `<li><strong>${func ? func.nome : 'Porteiro'}</strong> - ${o.justificativa} (Ref: ${o.data_referencia})</li>`;
         }).join('');
         banner.style.display = 'flex';
     } else {

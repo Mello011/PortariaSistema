@@ -41,3 +41,12 @@ Este arquivo registra continuamente todas as funcionalidades implementadas, corr
 - [x] **Banco de dados**: tabela `status_caixa` renomeada para `controle_chaves`; tabela `entregas_em_andamento` renomeada para `rondas_em_andamento`; coluna `exige_fechamento_caixa` renomeada para `exige_fechamento_chaves`; horários de jornada ajustados para escalas típicas de portaria/segurança predial (incluindo turno noturno do Vigilante cruzando a meia-noite).
 - [x] **Código (`app.js`)**: funções e variáveis renomeadas para refletir o novo domínio (`toggleStatusChaves`, `updateChavesUI`, `updatePorteiroAlerts`, `mockStore.statusChaves`, `rondaEmAndamento`, etc.), sem alteração nas regras de negócio originais.
 - [x] **Dados de exemplo (seed)**: colaboradores fictícios renomeados para refletir os novos cargos (Porteiro, Vigilante, Zelador, Recepcionista).
+
+### [Versão 2.1.0] - Compatibilidade GitHub Pages & Execução 100% Client-Side
+- [x] **Adaptação para GitHub Pages**: Remoção de qualquer dependência de ambiente de servidor (Node.js/Express/npm).
+- [x] **Arquivos de Entrada & Nomenclatura**:
+  - `index.html` configurado como entry point da aplicação, vinculando `styles.css` e `app.js` via caminhos relativos.
+- [x] **Correções de Compatibilidade**:
+  - Ajuste de escopo de eventos JS (`switchDashSubTab`) para evitar incompatibilidades de navegadores.
+  - Correção de textos legados de alertas gerenciais para o cargo de Porteiro.
+  - Testes de integração das regras de negócio (batida de ponto, atestados, espelho, hashes e controle de chaves) no modelo em memória local.
